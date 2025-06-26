@@ -6,7 +6,7 @@ This is the official hub for the community campaign to nominate **Baraa Khatib S
 Baraa has helped thousands of learners around the world not only understand data analytics, but build real careers and better lives. Through high-quality, clear, and empowering instruction, he’s become more than a YouTuber—he’s a true educator.
 
 🚀 **What’s coming**  
-On **Sunday, June 30**, this site will launch a full campaign toolkit:
+On **Sunday, July 8**, this site will launch a full campaign toolkit:
 - ✅ Award information & eligibility
 - ✅ Action plan for the community
 - ✅ Endorsement templates
