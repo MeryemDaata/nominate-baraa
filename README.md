@@ -1,6 +1,6 @@
 # 🌟 #NominateBaraa – Best YouTube STEM Educator
 
-This is the official hub for the community campaign to nominate **Baraa Yakan**, creator of *Data with Baraa*, for international recognition as one of the most impactful STEM educators on YouTube.
+This is the official hub for the community campaign to nominate **Baraa Khatib Salkini**, creator of *Data with Baraa*, for international recognition as one of the most impactful STEM educators on YouTube.
 
 📚 **Why this matters**  
 Baraa has helped thousands of learners around the world not only understand data analytics, but build real careers and better lives. Through high-quality, clear, and empowering instruction, he’s become more than a YouTuber—he’s a true educator.
@@ -18,6 +18,6 @@ On **Sunday, June 30**, this site will launch a full campaign toolkit:
 - Share the hashtag: **#NominateBaraa**
 - Get ready to write, share, or support from wherever you are.
 
-🙏 **With deep thanks to Baraa for his generosity—and to every volunteer who steps up.**
+🙏 **With deep thanks to Baraa Khatib Salkini for his generosity—and to every volunteer who steps up.**
 
 > Built and organized by the community, powered by purpose.
