@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>#NominateBaraa | A Global Community Effort</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #ffffff;
+      color: #222;
+    }
+
+    nav {
+      background: #002366;
+      color: white;
+      padding: 15px 0;
+      text-align: center;
+    }
+
+    nav a {
+      color: white;
+      margin: 0 15px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    nav::after {
+      content: " \2014 Page under construction, launching July 8";
+      display: block;
+      font-weight: normal;
+      font-size: 0.9rem;
+      margin-top: 10px;
+    }
+
+    header {
+      position: relative;
+      text-align: center;
+      color: white;
+    }
+
+    .hero-image {
+      width: 100%;
+      height: 60vh;
+      object-fit: cover;
+    }
+
+    .hero-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: rgba(0, 0, 0, 0.55);
+      padding: 20px 40px;
+      border-radius: 12px;
+      font-size: 1.8rem;
+    }
+
+    .flags-banner {
+      text-align: center;
+      padding: 10px;
+      background-color: #f2f2f2;
+    }
+
+    .intro {
+      text-align: center;
+      font-size: 1.2rem;
+      padding: 20px 20px 10px;
+    }
+
+    .date-note {
+      text-align: center;
+      font-size: 0.9rem;
+      margin-top: 5px;
+      color: #555;
+    }
+
+    .three-column-layout {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 0 20px 40px;
+    }
+
+    .left, .center, .right {
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+    }
+
+    .left, .right {
+      flex: 1 1 25%;
+      min-width: 250px;
+    }
+
+    .center {
+      flex: 1 1 45%;
+      min-width: 300px;
+    }
+
+    .testimonial {
+      background: #00004d;
+      padding: 15px;
+      margin-bottom: 15px;
+      border-radius: 10px;
+      color: white;
+    }
+
+    .testimonial a {
+      color: #FFFFFF;
+      text-decoration: none;
+    }
+
+    .media-toolkit {
+      text-align: center;
+      padding: 40px 20px 20px;
+    }
+
+    .media-toolkit blockquote {
+      background: #e8f0fe;
+      border-left: 5px solid #4285f4;
+      margin: 20px auto;
+      padding: 15px;
+      max-width: 600px;
+      font-style: italic;
+    }
+
+    footer {
+      text-align: center;
+      font-size: 0.9rem;
+      color: #002366;
+      padding: 20px;
+    }
+  </style>
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      document.getElementById("today-date").textContent = new Date().toLocaleDateString();
+    });
+  </script>
+</head>
+<body>
+  <nav>
+    <a href="#">Home</a>
+    <a href="#">Awards</a>
+    <a href="#">Volunteers</a>
+    <a href="#">Acknowledgements</a>
+  </nav>
+
+  <header>
+    <img src="images/baraa_img1.png" alt="Baraa Khatib Salkini Hero Banner" class="hero-image" />
+    <div class="hero-text">
+      <strong>#NominateBaraa</strong><br />
+      Recognizing a Global STEM Educator from his data community (Data with Baraa)
+    </div>
+  </header>
+
+  <div class="flags-banner">
+    🌍 🇺🇸 🇩🇪 🇸🇾 🇮🇳 🇹🇿 🇳🇬 🇬🇧 🇨🇦 🇧🇷 🇰🇪 🇵🇰 🇲🇾 🌍
+  </div>
+
+  <div class="intro">
+    <p>
+      This is a global, community-led initiative to nominate <strong>Baraa Khatib Salkini</strong> — the voice behind <em>Data with Baraa</em> — for a distinguished educator award. Through his clarity, generosity, and structured teaching, Baraa has helped thousands launch careers in data.
+    </p>
+    <p class="date-note">📅 Today is: <span id="today-date"></span></p>
+  </div>
+
+  <div class="three-column-layout">
+    <div class="left">
+      <h3>🏅 Awards</h3>
+      <p><strong>IEEE Medal of Honor</strong><br />Deadline: July 28</p>
+      <a href="#">Details</a>
+    </div>
+
+    <div class="center">
+      <h3>💬 Community Voices</h3>
+
+      <div class="testimonial">
+        <p><strong>Ayush Lekhi:</strong> "💯 true. Couldn't agree with you more on this. His work truly deserves all the praise."</p>
+        <p>Free education is what everybody deserves and he has made that possible with his courses.</p>
+        <p><a href="https://www.linkedin.com/in/ayush-lekhi-148569239/" target="_blank">View LinkedIn Profile</a></p>
+      </div>
+
+      <div class="testimonial">
+        <p><strong>Japheth Kallombo:</strong> "I conquer with you. I'm currently following one of his YouTube videos on SQL Full Course and I'm currently having fun learning from him."</p>
+        <p><a href="https://www.linkedin.com/in/japheth-kallombo-57b5799a/" target="_blank">View LinkedIn Profile</a></p>
+      </div>
+
+      <div class="testimonial">
+        <p><strong>Sunil Kumar:</strong> "#data with baraa, Baraa Khatib Salkini your videos are absolutely high quality. Thank you, please continue to educate us on data. #NominateBaraa"</p>
+        <p><a href="https://www.linkedin.com/in/sunilkumar-s-m-55327810b/" target="_blank">View LinkedIn Profile</a></p>
+      </div>
+    </div>
+
+    <div class="right">
+      <h3>🙌 Acknowledgements</h3>
+      <ul style="list-style: none; padding-left: 0;">
+        <li>🇺🇸 Meryem – Organizer</li>
+        <li>🇩🇪🇸🇾 Baraa – Educator</li>
+        <li>🌐 ChatGPT – Web Dev Partner</li>
+        <!-- Add more names and flags here -->
+      </ul>
+    </div>
+  </div>
+
+  <div class="media-toolkit">
+    <h3>📢 Media Toolkit</h3>
+    <p>Use these blurbs to share the campaign on LinkedIn or social media. Help spread the word!</p>
+    <blockquote>
+      "I'm supporting #NominateBaraa to recognize one of the most impactful STEM educators online. His generosity and clarity have launched careers and inspired thousands. Join us!"
+    </blockquote>
+    <blockquote>
+      "How has Data with Baraa impacted your learning? Share your story and be part of the movement. #NominateBaraa"
+    </blockquote>
+    <blockquote>
+      "We’re organizing to get Baraa Khatib Salkini officially recognized. If you’ve learned from him, now’s the time to give back. #NominateBaraa"
+    </blockquote>
+  </div>
+
+  <footer>
+    &copy; 2025 NominateBaraa Community. Built with heart by volunteers from around the world.
+  </footer>
+</body>
+</html>
