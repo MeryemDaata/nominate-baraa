@@ -133,31 +133,36 @@
   const db = firebase.firestore();
 
   document.getElementById("shoutoutForm").addEventListener("submit", function(e) {
-    e.preventDefault();
+  e.preventDefault();
 
-    const name = document.getElementById("name").value.trim();
-    const role = document.getElementById("role").value.trim();
-    const award = document.getElementById("award").value.trim();
-    const message = document.getElementById("message").value.trim();
+  // Get input values
+  const name = document.getElementById("name").value.trim();
+  const role = document.getElementById("role").value.trim();  // if you add role field
+  const award = document.getElementById("award").value.trim(); // if you add award field
+  const message = document.getElementById("message").value.trim();
 
-    if (!name || !role || !message) return alert("Please fill out all required fields.");
-    if (message.length > 160) return alert("Message is too long. Keep it brief!");
+  // Validation (optional)
+  if (!name || !message) return alert("Please fill out all required fields.");
 
-    db.collection("pendingShoutouts").add({
-      name,
-      role,
-      award,
-      message,
-      timestamp: firebase.firestore.FieldValue.serverTimestamp()
-    }).then(() => {
-      alert("Shoutout submitted!");
-      document.getElementById("shoutoutForm").reset();
-      loadShoutouts();
-    }).catch((err) => {
-      console.error(err);
-      alert("Something went wrong.");
-    });
+  // This is where your Firestore add code goes:
+  db.collection("shoutouts").add({
+    name,
+    role,
+    award,
+    message,
+    timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+    approved: false   // <-- Mark as pending approval
+  })
+  .then(() => {
+    alert("Shoutout submitted successfully!");
+    document.getElementById("shoutoutForm").reset();
+  })
+  .catch((error) => {
+    console.error("Error adding shoutout: ", error);
+    alert("Something went wrong. Please try again later.");
   });
+});
+
 
   function loadShoutouts() {
     const shoutoutsContainer = document.getElementById("shoutouts");
