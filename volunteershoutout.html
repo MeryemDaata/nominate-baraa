@@ -85,20 +85,29 @@
  <div style="max-width:600px; margin:40px auto; background:#e6f2ff; padding:20px; border-radius:10px;">
   <h2>🎉 Submit a Volunteer Shoutout</h2>
   <form id="shoutoutForm">
-    <label for="name">Your Name:</label><br>
-    <input type="text" id="name" required style="width:100%; padding:8px; margin-bottom:10px;"><br>
+  <label for="name">Your Name:</label><br>
+  <input type="text" id="name" required style="width:100%; padding:8px; margin-bottom:10px;"><br>
+  
+  <label for="role">Volunteer Role:</label><br>
+  <input type="text" id="role" required style="width:100%; padding:8px; margin-bottom:10px;"><br>
 
-    <label for="role">Your Volunteer Role:</label><br>
-    <input type="text" id="role" required style="width:100%; padding:8px; margin-bottom:10px;"><br>
+  <label for="award">Award:</label><br>
+  <select id="award" required style="width:100%; padding:8px; margin-bottom:10px;">
+    <option value="">-- Select Award --</option>
+    <option value="IEEE Medal of Honor">IEEE Medal of Honor</option>
+    <option value="IEEE Internet Award">IEEE Internet Award</option>
+    <!-- Add more awards if needed -->
+  </select><br>
 
-    <label for="award">Award (optional):</label><br>
-    <input type="text" id="award" placeholder="e.g. IEEE Medal of Honor" style="width:100%; padding:8px; margin-bottom:10px;"><br>
+  <label for="message">Shoutout (200 characters max):</label><br>
+  <textarea id="message" maxlength="200" rows="3" required style="width:100%; padding:8px;"></textarea><br>
 
-    <label for="message">Update (max 160 characters):</label><br>
-    <textarea id="message" maxlength="160" rows="3" required style="width:100%; padding:8px;"></textarea><br>
+  <!-- reCAPTCHA goes here -->
+  <div class="g-recaptcha" data-sitekey="6Lf2InQrAAAAAGhxMgSV2a6AXPKGKFyC4JcivB71"></div><br>
 
-    <button type="submit" style="background:#002366; color:white; padding:10px 20px; border:none; border-radius:5px;">Submit</button>
-  </form>
+  <button type="submit" style="background:#002366; color:white; padding:10px 20px; border:none; border-radius:5px;">Submit Shoutout</button>
+</form>
+
 </div>
 
 
