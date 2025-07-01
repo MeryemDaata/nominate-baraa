@@ -109,56 +109,67 @@
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
 
   <script>
-    const firebaseConfig = {
-      apiKey: "AIzaSyAfsWDg7_SqPtklQ63ZhK4KVZGkJc4nc9Y",
-      authDomain: "nominate-baraa.firebaseapp.com",
-      projectId: "nominate-baraa",
-      storageBucket: "nominate-baraa.firebasestorage.app",
-      messagingSenderId: "713901110009",
-      appId: "1:713901110009:web:7b42a4819eece043d1e828"
-    };
+  const firebaseConfig = {
+    apiKey: "AIzaSyAfsWDg7_SqPtklQ63ZhK4KVZGkJc4nc9Y",
+    authDomain: "nominate-baraa.firebaseapp.com",
+    projectId: "nominate-baraa",
+    storageBucket: "nominate-baraa.firebasestorage.app",
+    messagingSenderId: "713901110009",
+    appId: "1:713901110009:web:7b42a4819eece043d1e828"
+  };
 
-    // Initialize Firebase
-    firebase.initializeApp(firebaseConfig);
-    const db = firebase.firestore();
+  firebase.initializeApp(firebaseConfig);
+  const db = firebase.firestore();
 
-    // Handle form submit
-    document.getElementById("shoutoutForm").addEventListener("submit", function(e) {
-      e.preventDefault();
-      const name = document.getElementById("name").value.trim();
-      const message = document.getElementById("message").value.trim();
-      if (!name || !message) return alert("Please fill out both fields.");
-      
-      db.collection("shoutouts").add({
-        name,
-        message,
-        timestamp: firebase.firestore.FieldValue.serverTimestamp()
-      }).then(() => {
-        alert("Shoutout submitted!");
-        document.getElementById("shoutoutForm").reset();
-        loadShoutouts(); // reload to show update
-      }).catch((err) => {
-        console.error(err);
-        alert("Something went wrong.");
+  document.getElementById("shoutoutForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    const name = document.getElementById("name").value.trim();
+    const role = document.getElementById("role").value.trim();
+    const award = document.getElementById("award").value.trim();
+    const message = document.getElementById("message").value.trim();
+
+    if (!name || !role || !message) return alert("Please fill out all required fields.");
+    if (message.length > 160) return alert("Message is too long. Keep it brief!");
+
+    db.collection("shoutouts").add({
+      name,
+      role,
+      award,
+      message,
+      timestamp: firebase.firestore.FieldValue.serverTimestamp()
+    }).then(() => {
+      alert("Shoutout submitted!");
+      document.getElementById("shoutoutForm").reset();
+      loadShoutouts();
+    }).catch((err) => {
+      console.error(err);
+      alert("Something went wrong.");
+    });
+  });
+
+  function loadShoutouts() {
+    const shoutoutsContainer = document.getElementById("shoutouts");
+    shoutoutsContainer.innerHTML = "";
+    db.collection("shoutouts").orderBy("timestamp", "desc").get().then((querySnapshot) => {
+      querySnapshot.forEach((doc) => {
+        const data = doc.data();
+        const shout = document.createElement("div");
+        shout.className = "shoutout";
+        const time = data.timestamp?.toDate().toLocaleString() || "";
+        shout.innerHTML = `
+          <strong>${data.name}</strong> (${data.role})<br>
+          <em>${data.award || "General"}</em><br>
+          ${data.message}<br>
+          <small>${time}</small>
+        `;
+        shoutoutsContainer.appendChild(shout);
       });
     });
+  }
 
-    // Load and display shoutouts
-    function loadShoutouts() {
-      const shoutoutsContainer = document.getElementById("shoutouts");
-      shoutoutsContainer.innerHTML = "";
-      db.collection("shoutouts").orderBy("timestamp", "desc").get().then((querySnapshot) => {
-        querySnapshot.forEach((doc) => {
-          const data = doc.data();
-          const shout = document.createElement("div");
-          shout.className = "shoutout";
-          shout.innerHTML = `<strong>${data.name}</strong>: ${data.message}`;
-          shoutoutsContainer.appendChild(shout);
-        });
-      });
-    }
+  loadShoutouts();
+</script>
 
-    loadShoutouts();
-  </script>
 </body>
 </html>
