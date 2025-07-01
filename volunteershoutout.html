@@ -82,7 +82,25 @@
   <div id="shoutouts">
     <!-- Volunteer messages will appear here -->
   </div>
+<script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
 
+  // Your web app's Firebase configuration
+  const firebaseConfig = {
+    apiKey: "AIzaSyAfsWDg7_SqPtklQ63ZhK4KVZGkJc4nc9Y",
+    authDomain: "nominate-baraa.firebaseapp.com",
+    projectId: "nominate-baraa",
+    storageBucket: "nominate-baraa.firebasestorage.app",
+    messagingSenderId: "713901110009",
+    appId: "1:713901110009:web:7b42a4819eece043d1e828"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+</script>
   <!-- Firebase SDK scripts -->
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
@@ -94,3 +112,5 @@
       authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
       projectId: "YOUR_PROJECT_ID",
       storage
+        </body>
+        </html>
