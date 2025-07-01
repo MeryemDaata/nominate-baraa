@@ -145,23 +145,16 @@
   if (!name || !message) return alert("Please fill out all required fields.");
 
   // This is where your Firestore add code goes:
-  db.collection("shoutouts").add({
-    name,
-    role,
-    award,
-    message,
-    timestamp: firebase.firestore.FieldValue.serverTimestamp(),
-    approved: false   // <-- Mark as pending approval
-  })
-  .then(() => {
-    alert("Shoutout submitted successfully!");
-    document.getElementById("shoutoutForm").reset();
-  })
-  .catch((error) => {
-    console.error("Error adding shoutout: ", error);
-    alert("Something went wrong. Please try again later.");
+db.collection("shoutouts")
+  .orderBy("timestamp", "desc")
+  .get()
+  .then((querySnapshot) => {
+    console.log("All shoutouts:");
+    querySnapshot.forEach((doc) => {
+      console.log(doc.id, doc.data());
+    });
   });
-});
+
 
  function loadShoutouts() {
   const shoutoutsContainer = document.getElementById("shoutouts");
