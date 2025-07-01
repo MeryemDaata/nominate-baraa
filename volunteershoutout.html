@@ -4,6 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Volunteer Shoutouts | Nominate Baraa</title>
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
   <style>
     nav {
       background: #002366;
@@ -141,7 +143,7 @@
     if (!name || !role || !message) return alert("Please fill out all required fields.");
     if (message.length > 160) return alert("Message is too long. Keep it brief!");
 
-    db.collection("shoutouts").add({
+    db.collection("pendingShoutouts").add({
       name,
       role,
       award,
