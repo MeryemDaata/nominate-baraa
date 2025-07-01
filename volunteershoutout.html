@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Volunteer Shoutouts | Nominate Baraa</title>
+  <style>
+    /* Navigation bar styles */
+    nav {
+      background: #002366;
+      color: white;
+      padding: 15px 0;
+      text-align: center;
+    }
+
+    nav a {
+      color: white;
+      margin: 0 15px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    nav::after {
+      content: " — Page under construction, launching July 8";
+      display: block;
+      font-weight: normal;
+      font-size: 0.9rem;
+      margin-top: 10px;
+    }
+
+    /* Page styles */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      background: #f9f9f9;
+      color: #222;
+    }
+
+    h1 {
+      text-align: center;
+      color: #002366;
+      margin-top: 30px;
+    }
+
+    #shoutouts {
+      margin-top: 20px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+      background: white;
+      padding: 15px;
+      border-radius: 8px;
+      box-shadow: 0 0 8px rgba(0,0,0,0.1);
+      min-height: 150px;
+    }
+
+    .shoutout {
+      border-bottom: 1px solid #ddd;
+      padding: 10px 0;
+    }
+
+    .shoutout:last-child {
+      border-bottom: none;
+    }
+
+    .shoutout strong {
+      color: #0055cc;
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="#">Home</a>
+    <a href="#">Awards</a>
+    <a href="#">Volunteers</a>
+    <a href="#">Acknowledgements</a>
+    <a href="#">Volunteer Shoutout</a>
+  </nav>
+
+  <h1>Volunteer Shoutouts</h1>
+
+  <div id="shoutouts">
+    <!-- Volunteer messages will appear here -->
+  </div>
+
+  <!-- Firebase SDK scripts -->
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+  
+  <script>
+    // Your Firebase configuration
+    const firebaseConfig = {
+      apiKey: "YOUR_API_KEY",
+      authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
+      projectId: "YOUR_PROJECT_ID",
+      storage
