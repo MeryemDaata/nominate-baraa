@@ -146,43 +146,23 @@
 
   // This is where your Firestore add code goes:
 db.collection("shoutouts")
+  .where("approved", "==", true)
   .orderBy("timestamp", "desc")
   .get()
   .then((querySnapshot) => {
-    console.log("All shoutouts:");
+    console.log("Documents fetched:", querySnapshot.size);
+    if (querySnapshot.empty) {
+      console.log("No approved shoutouts to display.");
+    }
     querySnapshot.forEach((doc) => {
-      console.log(doc.id, doc.data());
+      console.log("Shoutout data:", doc.data());
+      // ...existing rendering code
     });
+  })
+  .catch((error) => {
+    console.error("Error fetching shoutouts:", error);
   });
 
-
- function loadShoutouts() {
-  const shoutoutsContainer = document.getElementById("shoutouts");
-  shoutoutsContainer.innerHTML = "";
-
-  db.collection("shoutouts")
-    .where("approved", "==", true)
-    .orderBy("timestamp", "desc")
-    .get()
-    .then((querySnapshot) => {
-      querySnapshot.forEach((doc) => {
-        const data = doc.data();
-        const shout = document.createElement("div");
-        shout.className = "shoutout";
-        const time = data.timestamp?.toDate().toLocaleString() || "";
-        shout.innerHTML = `
-          <strong>${data.name}</strong> (${data.role})<br>
-          <em>${data.award || "General"}</em><br>
-          ${data.message}<br>
-          <small>${time}</small>
-        `;
-        shoutoutsContainer.appendChild(shout);
-      });
-    })
-    .catch((error) => {
-      console.error("Error fetching shoutouts:", error);
-    });
-}
 
   loadShoutouts();
 </script>
