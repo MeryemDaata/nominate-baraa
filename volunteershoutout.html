@@ -164,36 +164,51 @@
     });
 
     function loadShoutouts() {
-      const shoutoutsContainer = document.getElementById("shoutouts");
-      shoutoutsContainer.innerHTML = "";
+  const shoutoutsContainer = document.getElementById("shoutouts");
+  shoutoutsContainer.innerHTML = "";
 
-      db.collection("shoutouts")
-        .orderBy("timestamp", "desc")
-        .limit(20)
-        .get()
-        .then((querySnapshot) => {
-          if (querySnapshot.empty) {
-            shoutoutsContainer.innerHTML = "<p>No shoutouts yet.</p>";
-            return;
-          }
-          querySnapshot.forEach((doc) => {
-            const data = doc.data();
-            const shout = document.createElement("div");
-            shout.className = "shoutout";
-            const time = data.timestamp?.toDate().toLocaleString() || "No timestamp";
-            shout.innerHTML = `
-              <strong>${data.name}</strong> (${data.role})<br>
-              <em>${data.award || "General"}</em><br>
-              ${data.message}<br>
-              <small>${time}</small>
-            `;
-            shoutoutsContainer.appendChild(shout);
-          });
-        })
-        .catch((error) => {
-          console.error("Error fetching shoutouts:", error);
-        });
-    }
+  db.collection("shoutouts")
+    .orderBy("timestamp", "desc")
+    .limit(20)
+    .get()
+    .then((querySnapshot) => {
+      if (querySnapshot.empty) {
+        shoutoutsContainer.innerHTML = "<p>No shoutouts yet.</p>";
+        return;
+      }
+
+      querySnapshot.forEach((doc) => {
+        const data = doc.data();
+        const id = doc.id;
+        const shout = document.createElement("div");
+        shout.className = "shoutout";
+        shout.id = `shoutout-${id}`;
+        const time = data.timestamp?.toDate().toLocaleString() || "No timestamp";
+        const shareUrl = `https://www.linkedin.com/sharing/share-offsite/?url=https://meryemdaata.github.io/nominate-baraa/shoutouts.html#shoutout-${id}`;
+       shout.innerHTML = `
+  <strong>${data.name}</strong> (${data.role})<br>
+  <em>${data.award || "General"}</em><br>
+  ${data.message}<br>
+  <small>${time}</small><br><br>
+  <a 
+    href="${shareUrl}" 
+    target="_blank" 
+    style="display:inline-flex; align-items:center; gap:6px; background: #0A66C2; color: white; padding: 6px 12px; border-radius: 4px; text-decoration: none; font-weight: bold;"
+  >
+    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="white" viewBox="0 0 24 24">
+      <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.762 2.239 5 5 5h14c2.762 0 5-2.238 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-10h3v10zm-1.5-11.269c-.966 0-1.75-.784-1.75-1.75s.784-1.75 1.75-1.75 1.75.784 1.75 1.75-.784 1.75-1.75 1.75zm13.5 11.269h-3v-5.604c0-1.337-.027-3.061-1.866-3.061-1.867 0-2.154 1.459-2.154 2.968v5.697h-3v-10h2.881v1.367h.041c.401-.761 1.379-1.563 2.839-1.563 3.037 0 3.6 2.001 3.6 4.6v5.596z"/>
+    </svg>
+    Share on LinkedIn
+  </a>
+`;
+
+        shoutoutsContainer.appendChild(shout);
+      });
+    })
+    .catch((error) => {
+      console.error("Error fetching shoutouts:", error);
+    });
+}
 
     loadShoutouts(); // Call once on page load
   </script>
