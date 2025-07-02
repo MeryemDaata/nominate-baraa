@@ -80,38 +80,35 @@
   <h1>Volunteer Shoutouts</h1>
 
   <p style="text-align:center; max-width: 600px; margin: 10px auto 30px; font-size: 1.1rem; color: #333;">
-  📝 This is where volunteers share short status updates with the community — what’s been done, what’s submitted, what’s in progress. 
-  Let’s celebrate each step forward together. 
-</p>
+    📝 This is where volunteers share short status updates with the community — what’s been done, what’s submitted, what’s in progress. 
+    Let’s celebrate each step forward together. 
+  </p>
 
- <div style="max-width:600px; margin:40px auto; background:#e6f2ff; padding:20px; border-radius:10px;">
-  <h2>🎉 Submit a Volunteer Shoutout</h2>
-  <form id="shoutoutForm">
-  <label for="name">Your Name:</label><br>
-  <input type="text" id="name" required style="width:100%; padding:8px; margin-bottom:10px;"><br>
-  
-  <label for="role">Volunteer Role:</label><br>
-  <input type="text" id="role" required style="width:100%; padding:8px; margin-bottom:10px;"><br>
+  <div style="max-width:600px; margin:40px auto; background:#e6f2ff; padding:20px; border-radius:10px;">
+    <h2>🎉 Submit a Volunteer Shoutout</h2>
+    <form id="shoutoutForm">
+      <label for="name">Your Name:</label><br>
+      <input type="text" id="name" required style="width:100%; padding:8px; margin-bottom:10px;"><br>
 
-  <label for="award">Award:</label><br>
-  <select id="award" required style="width:100%; padding:8px; margin-bottom:10px;">
-    <option value="">-- Select Award --</option>
-    <option value="IEEE Medal of Honor">IEEE Medal of Honor</option>
-    <option value="IEEE Internet Award">IEEE Internet Award</option>
-    <!-- Add more awards if needed -->
-  </select><br>
+      <label for="role">Volunteer Role:</label><br>
+      <input type="text" id="role" required style="width:100%; padding:8px; margin-bottom:10px;"><br>
 
-  <label for="message">Shoutout (200 characters max):</label><br>
-  <textarea id="message" maxlength="200" rows="3" required style="width:100%; padding:8px;"></textarea><br>
+      <label for="award">Award:</label><br>
+      <select id="award" required style="width:100%; padding:8px; margin-bottom:10px;">
+        <option value="">-- Select Award --</option>
+        <option value="IEEE Medal of Honor">IEEE Medal of Honor</option>
+        <option value="IEEE Internet Award">IEEE Internet Award</option>
+      </select><br>
 
-  <!-- reCAPTCHA goes here -->
-  <div class="g-recaptcha" data-sitekey="6Lf2InQrAAAAACODlg105Zgq55liz8MUCh9iTJCQ"></div><br>
+      <label for="message">Shoutout (200 characters max):</label><br>
+      <textarea id="message" maxlength="200" rows="3" required style="width:100%; padding:8px;"></textarea><br>
 
-  <button type="submit" style="background:#002366; color:white; padding:10px 20px; border:none; border-radius:5px;">Submit Shoutout</button>
-</form>
+      <!-- reCAPTCHA goes here -->
+      <div class="g-recaptcha" data-sitekey="6Lf2InQrAAAAACODlg105Zgq55liz8MUCh9iTJCQ"></div><br>
 
-</div>
-
+      <button type="submit" style="background:#002366; color:white; padding:10px 20px; border:none; border-radius:5px;">Submit Shoutout</button>
+    </form>
+  </div>
 
   <div id="shoutouts"></div>
 
@@ -120,52 +117,79 @@
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
 
   <script>
-  const firebaseConfig = {
-    apiKey: "AIzaSyAfsWDg7_SqPtklQ63ZhK4KVZGkJc4nc9Y",
-    authDomain: "nominate-baraa.firebaseapp.com",
-    projectId: "nominate-baraa",
-    storageBucket: "nominate-baraa.firebasestorage.app",
-    messagingSenderId: "713901110009",
-    appId: "1:713901110009:web:7b42a4819eece043d1e828"
-  };
+    const firebaseConfig = {
+      apiKey: "AIzaSyAfsWDg7_SqPtklQ63ZhK4KVZGkJc4nc9Y",
+      authDomain: "nominate-baraa.firebaseapp.com",
+      projectId: "nominate-baraa",
+      storageBucket: "nominate-baraa.firebasestorage.app",
+      messagingSenderId: "713901110009",
+      appId: "1:713901110009:web:7b42a4819eece043d1e828"
+    };
 
-  firebase.initializeApp(firebaseConfig);
-  const db = firebase.firestore();
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
 
-  document.getElementById("shoutoutForm").addEventListener("submit", function(e) {
-  e.preventDefault();
+    document.getElementById("shoutoutForm").addEventListener("submit", function(e) {
+      e.preventDefault();
 
-  // Get input values
-  const name = document.getElementById("name").value.trim();
-  const role = document.getElementById("role").value.trim();  // if you add role field
-  const award = document.getElementById("award").value.trim(); // if you add award field
-  const message = document.getElementById("message").value.trim();
+      const name = document.getElementById("name").value.trim();
+      const role = document.getElementById("role").value.trim();
+      const award = document.getElementById("award").value.trim();
+      const message = document.getElementById("message").value.trim();
 
-  // Validation (optional)
-  if (!name || !message) return alert("Please fill out all required fields.");
+      if (!name || !message) return alert("Please fill out all required fields.");
 
-  // This is where your Firestore add code goes:
-db.collection("shoutouts")
-  .where("approved", "==", true)
-  .orderBy("timestamp", "desc")
-  .get()
-  .then((querySnapshot) => {
-    console.log("Documents fetched:", querySnapshot.size);
-    if (querySnapshot.empty) {
-      console.log("No approved shoutouts to display.");
-    }
-    querySnapshot.forEach((doc) => {
-      console.log("Shoutout data:", doc.data());
-      // ...existing rendering code
+      db.collection("shoutouts").add({
+        name,
+        role,
+        award,
+        message,
+        timestamp: firebase.firestore.FieldValue.serverTimestamp()
+      })
+      .then(() => {
+        alert("Shoutout submitted successfully!");
+        document.getElementById("shoutoutForm").reset();
+        loadShoutouts(); // Refresh shoutouts after submission
+      })
+      .catch((error) => {
+        console.error("Error adding shoutout: ", error);
+        alert("Something went wrong. Please try again later.");
+      });
     });
-  })
-  .catch((error) => {
-    console.error("Error fetching shoutouts:", error);
-  });
 
+    function loadShoutouts() {
+      const shoutoutsContainer = document.getElementById("shoutouts");
+      shoutoutsContainer.innerHTML = "";
 
-  loadShoutouts();
-</script>
+      db.collection("shoutouts")
+        .orderBy("timestamp", "desc")
+        .limit(20)
+        .get()
+        .then((querySnapshot) => {
+          if (querySnapshot.empty) {
+            shoutoutsContainer.innerHTML = "<p>No shoutouts yet.</p>";
+            return;
+          }
+          querySnapshot.forEach((doc) => {
+            const data = doc.data();
+            const shout = document.createElement("div");
+            shout.className = "shoutout";
+            const time = data.timestamp?.toDate().toLocaleString() || "No timestamp";
+            shout.innerHTML = `
+              <strong>${data.name}</strong> (${data.role})<br>
+              <em>${data.award || "General"}</em><br>
+              ${data.message}<br>
+              <small>${time}</small>
+            `;
+            shoutoutsContainer.appendChild(shout);
+          });
+        })
+        .catch((error) => {
+          console.error("Error fetching shoutouts:", error);
+        });
+    }
 
+    loadShoutouts(); // Call once on page load
+  </script>
 </body>
 </html>
