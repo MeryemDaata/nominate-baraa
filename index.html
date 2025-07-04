@@ -5,16 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>#NominateBaraa | A Global Community Effort</title>
 
-  <!-- ======== Base Styles ======== -->
+  <!-- ========== Base Styles ========== -->
   <style>
-    /* ===== utilities ===== */
     :root {
       --blue: #002366;
       --shadow: 0 0 10px rgba(0, 0, 0, 0.05);
     }
     * { box-sizing: border-box; }
 
-    /* ===== layout ===== */
+    /* ------ layout ------ */
     body {
       font-family: Arial, Helvetica, sans-serif;
       margin: 0;
@@ -45,8 +44,8 @@
     }
 
     header { position: relative; text-align: center; color: #fff; }
-    .hero-image   { width: 100%; height: 60vh; object-fit: cover; }
-    .hero-text    {
+    .hero-image { width: 100%; height: 60vh; object-fit: cover; }
+    .hero-text  {
       position: absolute; top: 50%; left: 50%;
       transform: translate(-50%, -50%);
       background: rgba(0,0,0,.55);
@@ -57,14 +56,35 @@
 
     main { max-width: 1200px; margin: 0 auto; }
 
-    /* ===== intro & flags ===== */
+    /* ------ flags & intro ------ */
     .flags-banner { text-align: center; padding: 10px; background: #f2f2f2; }
     .flags-banner img { width: 24px; height: 16px; margin: 0 4px; }
 
     .intro { text-align: center; font-size: 1.2rem; padding: 20px 20px 10px; }
     .date-note { font-size: 0.9rem; color: #555; }
 
-   
+    /* ------ two‑column section (awards + testimonials) ------ */
+    .two-column {
+      display: flex; flex-wrap: wrap; gap: 20px;
+      padding: 0 20px 40px;
+    }
+    .two-column .card {
+      flex: 1 1 48%;
+      min-width: 280px;          /* stay readable on narrow view */
+      /* no background / no padding / no border / no shadow */
+    }
+
+    .testimonial {
+      background: #00004d;
+      color: #fff;
+      padding: 15px;
+      border-radius: 10px;
+      margin-bottom: 15px;
+    }
+    .testimonial a { color: #fff; text-decoration: none; }
+
+    /* ------ acknowledgements grid ------ */
+    .ack-wrap { padding: 0 20px 40px; }
     .ack-grid {
       display: grid;
       gap: 20px;
@@ -72,15 +92,23 @@
     }
     .ack-card {
       background: #fff;
-      padding: 0;
-      border-radius: 0;
+      padding: 15px;
+      border-radius: 12px;
       box-shadow: var(--shadow);
-      text-align: left;
       line-height: 1.4;
     }
     .ack-card img { vertical-align: middle; width: 20px; margin-right: 4px; }
 
-    /* ===== media queries ===== */
+    /* ------ organizer statement ------ */
+    .organizer-statement {
+      background: #006994;
+      color: #fff;
+      padding: 30px 20px;
+      text-align: center;
+      border-top: 2px solid #ffd700;
+    }
+
+    /* ------ media queries ------ */
     @media (max-width: 600px) {
       .hero-image { height: 45vh; }
       .hero-text  { font-size: 1.4rem; padding: 15px 25px; }
@@ -96,12 +124,13 @@
 
   <script>
     document.addEventListener("DOMContentLoaded", () => {
-      document.getElementById("today-date").textContent = new Date().toLocaleDateString();
+      document.getElementById("today-date").textContent =
+        new Date().toLocaleDateString();
     });
   </script>
 </head>
 <body>
-  <!-- ========= NAV ========= -->
+  <!-- ===== NAV ===== -->
   <nav>
     <a href="#">Home</a>
     <a href="#">Awards</a>
@@ -111,7 +140,7 @@
     <a href="https://meryemdaata.github.io/nominate-baraa/communication.html">Communication</a>
   </nav>
 
-  <!-- ========= HERO ========= -->
+  <!-- ===== HERO ===== -->
   <header>
     <img src="images/baraa_img1.png" alt="Baraa Khatib Salkini Hero Banner" class="hero-image">
     <div class="hero-text">
@@ -120,56 +149,37 @@
     </div>
   </header>
 
-  <!-- ========= FLAGS ========= -->
+  <!-- ===== FLAGS ===== -->
   <div class="flags-banner">
     <!-- (flags truncated for brevity…) -->
     <img src="https://raw.githubusercontent.com/MeryemCiftciAly/assets/main/united-states.png" alt="USA">
-     <img src="https://raw.githubusercontent.com/MeryemCiftciAly/assets/main/united-kingdom.png" alt="United Kingdom">
+    <img src="https://raw.githubusercontent.com/MeryemCiftciAly/assets/main/united-kingdom.png" alt="UK">
     <img src="https://raw.githubusercontent.com/MeryemCiftciAly/assets/main/germany.png" alt="Germany">
-        <img src="https://raw.githubusercontent.com/MeryemCiftciAly/assets/main/jamaica.png" alt="USA">
-    <img src="https://raw.githubusercontent.com/MeryemCiftciAly/assets/main/turkiye.png" alt="Turkiye">
-    <img src="https://raw.githubusercontent.com/MeryemCiftciAly/assets/main/germany.png" alt="Germany">
-    <img src="https://raw.githubusercontent.com/MeryemCiftciAly/assets/main/china.png" alt="China">
-    <img src="https://raw.githubusercontent.com/MeryemCiftciAly/assets/main/japan.png" alt="Japan">
-     <img src="https://raw.githubusercontent.com/MeryemCiftciAly/assets/main/togo.png" alt="Togo">
-      <img src="https://raw.githubusercontent.com/MeryemCiftciAly/assets/main/afghanistan.png" alt="Afghanistan">
-     <img src="https://raw.githubusercontent.com/MeryemCiftciAly/assets/main/fiji.png" alt="Figi">
- <img src="https://raw.githubusercontent.com/MeryemCiftciAly/assets/main/uganda.png" alt="Uganda">
-<img src="https://raw.githubusercontent.com/MeryemCiftciAly/assets/main/india.png" alt="India">
-    <img src="https://raw.githubusercontent.com/MeryemCiftciAly/assets/main/pakistan.png" alt="Pakistan">
-    <img src="https://raw.githubusercontent.com/MeryemCiftciAly/assets/main/trinidad-and-tobago.png" alt="Trinidad and Tobago">
-     <img src="https://raw.githubusercontent.com/MeryemCiftciAly/assets/main/zambia.png" alt="Zambia">
-     <img src="https://raw.githubusercontent.com/MeryemCiftciAly/assets/main/hong-kong.png" alt="Hong Kong">
-    <img src="https://raw.githubusercontent.com/MeryemCiftciAly/assets/main/Mexico.png" alt="Mexico">
-<img src="https://raw.githubusercontent.com/MeryemCiftciAly/assets/main/korea.png" alt="Korea">
-<img src="https://raw.githubusercontent.com/MeryemCiftciAly/assets/main/spain.png" alt="Spain">
-    <img src="https://raw.githubusercontent.com/MeryemCiftciAly/assets/main/canada.png" alt="Canada">
-       <img src="https://raw.githubusercontent.com/MeryemCiftciAly/assets/main/kuwait.png" alt="Kuwait">
-
-    
-
-    <!-- add the rest of your flag images here -->
+    <!-- add more flags as needed -->
   </div>
 
-  <!-- ========= INTRO ========= -->
+  <!-- ===== INTRO ===== -->
   <main>
     <div class="intro">
       <p>
-        This is a global, community‑led initiative to nominate <strong>Baraa Khatib Salkini</strong> —
-        the voice behind <em>Data with Baraa</em> — for a distinguished educator award. Through his clarity,
-        generosity, and structured teaching, Baraa has helped thousands launch careers in data.
+        This is a global, community‑led initiative to nominate
+        <strong>Baraa Khatib Salkini</strong> — the voice behind
+        <em>Data with Baraa</em> — for a distinguished educator award. Through
+        his clarity, generosity, and structured teaching, Baraa has helped
+        thousands launch careers in data.
       </p>
       <p class="date-note">📅 Today is: <span id="today-date"></span></p>
     </div>
 
     <!-- ===== TWO‑COLUMN SECTION ===== -->
     <section class="two-column">
-      <!-- Possible Awards -->
+      <!-- Awards column -->
       <div class="card">
         <h3>🏅 Possible Awards for Baraa</h3>
         <p>
           <strong>Ashoka Fellowship</strong><br>
-          Ashoka builds and nurtures the world's largest network of social entrepreneurs.<br>
+          Ashoka nurtures the world’s largest network of social
+          entrepreneurs.<br>
           <a href="https://meryemdaata.github.io/nominate-baraa/ashoka_fellowship.html">Details</a>
         </p>
         <p>
@@ -179,11 +189,13 @@
         </p>
         <div style="text-align:center; margin-top:2rem;">
           <a href="https://meryemdaata.github.io/nominate-baraa/awards.html"
-             style="font-weight:bold; color:var(--blue); text-decoration:underline;">View all awards</a>
+             style="font-weight:bold; color:var(--blue); text-decoration:underline;">
+            View all awards
+          </a>
         </div>
       </div>
 
-      <!-- Community Voices -->
+      <!-- Community Voices column -->
       <div class="card">
         <h3>💬 Community Voices</h3>
 
@@ -209,18 +221,18 @@
     <section class="ack-wrap">
       <h3 style="text-align:center;">🙌 Acknowledgements</h3>
       <div class="ack-grid">
-        <!-- Repeat .ack-card as needed -->
+        <!-- one card -->
         <div class="ack-card">
           <img src="https://raw.githubusercontent.com/MeryemCiftciAly/assets/main/united-states.png" alt="US">
           <img src="https://raw.githubusercontent.com/MeryemCiftciAly/assets/main/jamaica.png" alt="JA">
           <img src="https://raw.githubusercontent.com/MeryemCiftciAly/assets/main/turkiye.png" alt="TR">
-          Kamara Rowe‑Ciftci (Meryem) – Organizer / Nominee Lead
+          Kamara Rowe‑Ciftci (Meryem) – Organizer / Nominee Lead
         </div>
 
         <div class="ack-card">
           <img src="https://raw.githubusercontent.com/MeryemCiftciAly/assets/main/germany.png" alt="DE">
           <img src="https://raw.githubusercontent.com/MeryemCiftciAly/assets/main/syrian-arab-republic.png" alt="SY">
-          Baraa Khatib Salkini – Educator (Data With Baraa)
+          Baraa Khatib Salkini – Educator (Data With Baraa)
         </div>
 
         <div class="ack-card">
@@ -228,25 +240,31 @@
           ChatGPT – Web Dev Partner
         </div>
 
-        <!-- add more .ack-card blocks here; grid will auto‑wrap -->
+        <!-- add more .ack-card blocks here -->
       </div>
     </section>
   </main>
-<!-- Organizer's Statement -->
-<div class="organizer-statement" style="background-color: #006994; padding: 30px 20px; text-align: center; border-top: 2px solid #ffd700;">
-  <h3>☀️ Organizer's Statement</h3>
-  <p style="max-width: 700px; margin: 0 auto; font-size: 1.05rem; line-height: 1.6;">
-    I started this project because I know what it feels like to be passionate about data but feel underprepared after completing formal programs and felt the same way even after a four-year degree. 
-    Discovering <strong>Data with Baraa</strong> gave me clarity, direction, and the confidence to believe that I could not only understand analytics, but succeed in it. 
-    This is more than just a nomination campaign; it's an acknowledgment of one of the few educators making high-quality learning accessible and life-changing — for free. 
-    <br /><br />
-    This campaign is our collective thank you. We’re learning, growing, and organizing — together.
-  </p>
-</div>
 
-  <!-- ========= FOOTER ========= -->
+  <!-- ===== ORGANIZER STATEMENT ===== -->
+  <div class="organizer-statement">
+    <h3>☀️ Organizer's Statement</h3>
+    <p style="max-width:700px; margin:0 auto; font-size:1.05rem; line-height:1.6;">
+      I started this project because I know what it feels like to be passionate
+      about data but feel underprepared after completing formal programs—even
+      after a four‑year degree. Discovering <strong>Data with Baraa</strong>
+      gave me clarity, direction, and the confidence to believe that I could
+      not only understand analytics, but succeed in it. <br><br>
+      This is more than just a nomination campaign; it's an acknowledgment of
+      one of the few educators making high‑quality learning accessible and
+      life‑changing — for free. <br><br>
+      This campaign is our collective thank you. We’re learning, growing, and
+      organizing — together.
+    </p>
+  </div>
+
+  <!-- ===== FOOTER ===== -->
   <footer>
-    © 2025 NominateBaraa Community. Built with heart by volunteers from around the world.
+    © 2025 NominateBaraa Community • Built with heart by volunteers around the world.
   </footer>
 </body>
 </html>
